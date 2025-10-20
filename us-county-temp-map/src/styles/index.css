@@ -1,39 +1,285 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+:root {
+    color-scheme: light dark;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
 }
 
-#map {
-    width: 100%;
-    height: 100vh;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f9fafb;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-header {
+    padding: 1.5rem 2rem 0.5rem;
+}
+
+.app-header h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+}
+
+.app-header p {
+    margin: 0;
+    max-width: 60ch;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem 1rem;
 }
 
 .month-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #ffffff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.month-selector label {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.month-selector select {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    color: #111827;
+    background: #ffffff;
+}
+
+.month-selector select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+.current-month {
+    font-size: 0.95rem;
+    color: #1f2937;
+}
+
+.map-wrapper {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 0 2rem 2rem;
+}
+
+.map-shell {
+    position: relative;
+    height: 100%;
+    min-height: 560px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+}
+
+.map-container {
+    height: 100%;
+    width: 100%;
+}
+
+.map-status {
     position: absolute;
-    top: 10px;
-    left: 10px;
     z-index: 1000;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(17, 24, 39, 0.85);
+    color: #f9fafb;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.25);
+}
+
+.map-status.error {
+    background: rgba(220, 38, 38, 0.9);
+}
+
+.legend {
+    position: absolute;
+    z-index: 1000;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 999px;
+    padding: 0.75rem 1.25rem;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(6px);
+}
+
+.legend-scale {
+    width: 220px;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #a50026 0%, #fdae61 40%, #ffffbf 50%, #74add1 75%, #313695 100%);
+}
+
+.legend-labels {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.legend-labels span:nth-child(2),
+.legend-labels span:nth-child(3) {
+    text-align: center;
+    font-weight: 600;
+}
+
+.legend-labels span:first-child,
+.legend-labels span:last-child {
+    font-weight: 700;
 }
 
 .county-popup {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    z-index: 1001;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    width: min(360px, calc(100% - 3rem));
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.25);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1200;
 }
 
-.county-popup h3 {
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.popup-header h2 {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
-.county-popup p {
-    margin: 5px 0;
+.popup-header button {
+    border: none;
+    background: #e5e7eb;
+    color: #1f2937;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.popup-header button:hover,
+.popup-header button:focus {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.selected-month {
+    margin: 0;
+    font-size: 1rem;
+    color: #1f2937;
+}
+
+.temperatures-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.temperatures-table th,
+.temperatures-table td {
+    padding: 0.35rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    color: #374151;
+}
+
+.temperatures-table tr.active th,
+.temperatures-table tr.active td {
+    color: #111827;
+    font-weight: 600;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.leaflet-tooltip {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.leaflet-tooltip-own {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+}
+
+.county-map-popup {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+    .app-header,
+    .controls,
+    .map-wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .legend {
+        left: 1.5rem;
+        right: 1.5rem;
+        transform: none;
+    }
+
+    .county-popup {
+        right: 1.5rem;
+        left: 1.5rem;
+        width: auto;
+    }
 }

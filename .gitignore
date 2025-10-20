@@ -1,0 +1,9 @@
+node_modules/
+us-county-temp-map/node_modules/
+us-county-temp-map/build/
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+us-county-temp-map/package-lock.json

@@ -1,16 +1,21 @@
-export interface County {
+import type { FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
+import type { MonthName } from '../constants/months';
+
+export interface CountyFeatureProperties extends GeoJsonProperties {
+    GEO_ID: string;
+    STATE: string;
+    COUNTY: string;
+    NAME: string;
+    LSAD: string;
+    CENSUSAREA: number;
+}
+
+export type CountyFeatureCollection = FeatureCollection<Geometry, CountyFeatureProperties>;
+
+export interface CountyTemperatureProfile {
     id: string;
     name: string;
     state: string;
-    geometry: {
-        type: string;
-        coordinates: number[][][]; // Assuming the coordinates are in a 2D array format
-    };
-}
-
-export interface TemperatureData {
-    countyId: string;
-    monthlyTemperatures: {
-        [month: string]: number; // Keyed by month (e.g., "January", "February", etc.)
-    };
+    center: [number, number];
+    temperatures: Record<MonthName, number>;
 }
