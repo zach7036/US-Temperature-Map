@@ -1,0 +1,72 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Los Angeles County",
+        "state": "California",
+        "avg_temp": {
+          "January": 14.0,
+          "February": 15.0,
+          "March": 16.0,
+          "April": 17.0,
+          "May": 19.0,
+          "June": 22.0,
+          "July": 24.0,
+          "August": 24.0,
+          "September": 23.0,
+          "October": 20.0,
+          "November": 16.0,
+          "December": 14.0
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-118.6682, 33.7045],
+            [-118.1553, 33.7045],
+            [-118.1553, 34.3373],
+            [-118.6682, 34.3373],
+            [-118.6682, 33.7045]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cook County",
+        "state": "Illinois",
+        "avg_temp": {
+          "January": -3.0,
+          "February": -1.0,
+          "March": 5.0,
+          "April": 10.0,
+          "May": 15.0,
+          "June": 20.0,
+          "July": 23.0,
+          "August": 22.0,
+          "September": 17.0,
+          "October": 10.0,
+          "November": 2.0,
+          "December": -2.0
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-87.9401, 41.6445],
+            [-87.5241, 41.6445],
+            [-87.5241, 42.0230],
+            [-87.9401, 42.0230],
+            [-87.9401, 41.6445]
+          ]
+        ]
+      }
+    }
+    // Additional counties can be added here following the same structure
+  ]
+}

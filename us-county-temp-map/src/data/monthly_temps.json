@@ -1,0 +1,62 @@
+{
+  "January": {
+    "CountyA": 30,
+    "CountyB": 28,
+    "CountyC": 32
+  },
+  "February": {
+    "CountyA": 32,
+    "CountyB": 30,
+    "CountyC": 34
+  },
+  "March": {
+    "CountyA": 45,
+    "CountyB": 42,
+    "CountyC": 48
+  },
+  "April": {
+    "CountyA": 55,
+    "CountyB": 52,
+    "CountyC": 58
+  },
+  "May": {
+    "CountyA": 65,
+    "CountyB": 62,
+    "CountyC": 68
+  },
+  "June": {
+    "CountyA": 75,
+    "CountyB": 72,
+    "CountyC": 78
+  },
+  "July": {
+    "CountyA": 85,
+    "CountyB": 82,
+    "CountyC": 88
+  },
+  "August": {
+    "CountyA": 83,
+    "CountyB": 80,
+    "CountyC": 86
+  },
+  "September": {
+    "CountyA": 75,
+    "CountyB": 72,
+    "CountyC": 78
+  },
+  "October": {
+    "CountyA": 60,
+    "CountyB": 58,
+    "CountyC": 62
+  },
+  "November": {
+    "CountyA": 45,
+    "CountyB": 42,
+    "CountyC": 48
+  },
+  "December": {
+    "CountyA": 35,
+    "CountyB": 32,
+    "CountyC": 38
+  }
+}
