@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US County Temperature Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Interactive US County Temperature Map</h1>
+            <p class="subtitle">Average monthly temperatures by county (1991-2020 climate normals)</p>
+        </header>
+
+        <div class="controls">
+            <div class="month-selector">
+                <label for="month-select">Select Month:</label>
+                <select id="month-select">
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6" selected>July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Temperature (°F)</div>
+                <div class="legend-gradient" id="legend-gradient"></div>
+                <div class="legend-labels" id="legend-labels"></div>
+            </div>
+        </div>
+
+        <div id="map-container">
+            <svg id="map"></svg>
+        </div>
+
+        <div id="tooltip" class="tooltip"></div>
+
+        <footer>
+            <p>Data source: NOAA National Centers for Environmental Information (NCEI)</p>
+            <p>County boundaries: U.S. Census Bureau via TopoJSON</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

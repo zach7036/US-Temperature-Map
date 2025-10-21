@@ -1,0 +1,23 @@
+{
+  "name": "us-temperature-map",
+  "version": "1.0.0",
+  "description": "Interactive US County Temperature Map with monthly climate data visualization",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "process-data": "node scripts/process-temperature-data.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:34178/git/zach7036/US-Temperature-Map"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^7.9.0",
+    "d3-geo": "^3.1.1",
+    "topojson-client": "^3.1.0",
+    "us-atlas": "^3.0.1"
+  }
+}
