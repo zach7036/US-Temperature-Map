@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.month-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.month-selector label {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #34495e;
+}
+
+#month-select {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#month-select:hover {
+    border-color: #2980b9;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+#month-select:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.legend {
+    flex: 1;
+    min-width: 300px;
+}
+
+.legend-title {
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.legend-gradient {
+    height: 20px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+#map-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f8f9fa;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#map {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.county {
+    stroke: #fff;
+    stroke-width: 0.3;
+    cursor: pointer;
+    transition: stroke-width 0.2s ease;
+}
+
+.county:hover {
+    stroke: #2c3e50;
+    stroke-width: 1.5;
+}
+
+.tooltip {
+    position: fixed;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 14px;
+    z-index: 1000;
+    max-width: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+.tooltip-county {
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 15px;
+}
+
+.tooltip-temp {
+    font-size: 16px;
+    color: #ffd700;
+}
+
+.tooltip-fips {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 4px;
+}
+
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .month-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #month-select {
+        width: 100%;
+    }
+}
